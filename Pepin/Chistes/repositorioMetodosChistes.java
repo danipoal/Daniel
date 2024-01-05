@@ -1,5 +1,6 @@
 import java.util.Arrays;
 import java.util.Random;
+import java.util.regex.*;
 
 public class repositorioMetodosChistes{
     static final int MAX_CHISTES = 50;
@@ -12,13 +13,11 @@ public class repositorioMetodosChistes{
         
         
     }
-
-    
-    
+  
     public static void introducirChiste(String chiste){
-        chistes[contadorChiste] = chiste;
+        chistes[contadorChiste] = chiste + "\n";                                                //Cambio realizado aqui
         contadorChiste++;
-        System.out.println("Chiste introducido! - " + chistes[contadorChiste-1] + "\n");
+        System.out.println("Chiste introducido! - " + chistes[contadorChiste-1] /*+ "\n" */);   //Cambio realizado aqui
     }
 
     public static void eliminarChiste(int nChiste){
@@ -29,6 +28,19 @@ public class repositorioMetodosChistes{
                
     }
     public static void colorear(String color, int nChiste){     //No se puede repintar si ya esta pintado, habria que eliminar dichos caracteres i substituirlos por otros
+        
+        String expresionColor = "\\u001B\\[([0-9;]+)m.*?\\u001B\\[0m";
+        Pattern patronColor = Pattern.compile(expresionColor);
+        Matcher matcherColor = patronColor.matcher(chistes[nChiste]);
+
+        if (matcherColor.find()) {                              //Si hay coincidencia en alguna parte del chiste con la expresion, true
+            String coincidencia = matcherColor.group(1);  //Poniendo un 1, coge la expresion exacta que coincide
+
+            System.out.println(coincidencia);                   //Esto captura el numero de color del codigo ansi
+        }
+
+        
+        
         if(color.equals("rojo")){                       //Se podria repintar con un pattern y matcher.
             chistes[nChiste] = "\u001B[31m" + chistes[nChiste] + "\u001B[0m";    // Tiene que acabar con el color negro para que se resetee
             System.out.printf(chistes[nChiste]);
