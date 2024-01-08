@@ -1,0 +1,10 @@
+{
+    // Configuración para el editor de código general
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+  
+    // Configuración específica para el formateo de código Java
+    "java.format.settings.tabulationSize": 2,
+    "java.format.settings.useTab": "never"
+  }
+  
