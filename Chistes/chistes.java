@@ -18,11 +18,12 @@ public class chistes extends repositorioMetodosChistes{
             System.out.println("4: Ver todos los chistes");
             System.out.println("5: Ver un chiste aleatorio");
             System.out.println("6: Cuenta el chiste que elijas");
+            System.out.println("7: Rellena unos cuantos chistes");
             System.out.printf("\n0: EXIT\n");
 
             System.out.printf("Introduce opcion\n");
             numeroMenu = sc.nextInt();
-            while(numeroMenu < 0 || numeroMenu > 6){
+            while(numeroMenu < 0 || numeroMenu > 7){
                 System.out.println("Opcion Incorrecta\n Repite: ");
                 numeroMenu = sc.nextInt();
                 
@@ -51,6 +52,11 @@ public class chistes extends repositorioMetodosChistes{
 
                 case 5:
                     System.out.printf(getRandomChiste());
+                    break;
+                case 6:                                     //En desarrollo
+                    break;
+                case 7:
+                    fillChistes();
                     break;
                 case 0:
                     System.out.printf("Gracias por usar este programa\n");

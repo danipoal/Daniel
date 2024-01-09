@@ -55,8 +55,16 @@ public class repositorioMetodosChistes{
         }
     }
     public static String getChistes(){
+        String allChistes = "";
+        String siguienteChiste;
+
+        for(int i = 0; i < contadorChiste; i++){
+            siguienteChiste = "[" + Integer.toString(i) + "]" + chistes[i] + "\n";
+            allChistes = allChistes + siguienteChiste;
+        }
         
-        return Arrays.toString(chistes).replace(", null", "");      //El replace hace que todos los espacios null se eliminen por nada
+        //return Arrays.toString(chistes).replace(", null", "");      //El replace hace que todos los espacios null se eliminen por nada
+        return allChistes;
     }
 
     public static String getRandomChiste(){
@@ -66,5 +74,17 @@ public class repositorioMetodosChistes{
         System.out.print(randomNumber + ":");
         return chistes[randomNumber];
 
+    }
+    public static void fillChistes(){
+        chistes[0] = "¿Qué hace una abeja en el gimnasio? ¡Zum-ba!";
+        chistes[1] = "¿Por qué el libro de matemáticas está estresado? Porque tiene demasiados problemas.";
+        chistes[2] = "¿Por qué los pájaros no usan Facebook? Porque ya tienen Twitter.";
+        chistes[3] = "¿Cuál es el animal más antiguo? La cebra, ¡porque está en blanco y negro!";
+        chistes[4] = "¿Cómo se llama un dinosaurio con una buena educación? Un diplodocus.";
+        chistes[5] = "¿Qué hace una impresora en una discoteca? ¡Imprimiendo música!";
+        chistes[6] = "¿Cómo se llama un mago que se ha perdido? ¿Un mago?";
+        
+        contadorChiste = 7;
+        System.out.printf("Chistes Introducidos!\n\n");
     }
 }
