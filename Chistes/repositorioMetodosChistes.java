@@ -35,8 +35,16 @@ public class repositorioMetodosChistes{
 
         if (matcherColor.find()) {                              //Si hay coincidencia en alguna parte del chiste con la expresion, true
             String coincidencia = matcherColor.group(1);  //Poniendo un 1, coge la expresion exacta que coincide
+            System.out.println(coincidencia);
+            if (coincidencia.equals("31")) coincidencia = "\u001B[31mrojo\u001B[0m";
+            if (coincidencia.equals("34")) coincidencia = "\u001B[34mazul\u001B[0m";
+            if (coincidencia.equals("33")) coincidencia = "\u001B[33mamarillo\u001B[0m";
 
-            System.out.println(coincidencia);                   //Esto captura el numero de color del codigo ansi
+            System.out.printf("El chiste que has seleccionado estaba coloreado de %s \n", coincidencia);                   //Esto captura el numero de color del codigo ansi
+            
+            chistes[nChiste] = chistes[nChiste].substring(5, chistes[nChiste].length() - 4);
+            System.out.println(chistes[nChiste]);
+            
         }
 
         
