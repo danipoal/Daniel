@@ -1,12 +1,17 @@
 //package ProyectoSwing;
 
 import javax.swing.*;
+import java.io.File;
+import java.io.FileWriter;
+//import ProyectoSwing.EscrituraFichero;
+import java.io.IOException;
 import java.util.concurrent.CountDownLatch;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.SQLException;
 
-public class Main {
+public class Main extends EscrituraFichero{
     public static void registro(){
         CountDownLatch latch = new CountDownLatch(1);
 
@@ -130,14 +135,61 @@ public class Main {
 
         botonEnviar.addActionListener(new ActionListener() {        //Accion despues de pulsar el boton
             @Override
-            public void actionPerformed(ActionEvent e) {   
+            public void actionPerformed(ActionEvent e) {
+                /* 
+                //Antes de poner las cosas que sucederan iniciamos la conexion a la BBDD
+                ConnectDB connect = new ConnectDB();
+                try{
+                    connect.connectToBD();
+                }catch(SQLException er){
+                    System.err.println("No se ha podido conectar");
+                    er.printStackTrace();
+                }
+                */
+
+                //Hay que guardar toda la informacion en alguna variable a la hora de pulsar el boton
+
+
+                String currentDirectory = System.getProperty("user.dir");           //Directorio actual
+                //File currentDirectoryFile = new File(currentDirectory);
+
+                File registros = new File(currentDirectory, "registros.txt");
+                //Intentamos crear el directorio, y el fichero donde se introduciran los registros
+                try{
+                    if (registros.createNewFile()) {
+                        System.out.println("Creado Correctamente.");
+                    }else{
+                        System.out.println("Ya estaba creado el fichero.");
+                    }
+                }catch(IOException e3){
+                    e3.printStackTrace();
+                }
+                    //Se escribe 
+                try{
+                    FileWriter fileWriter = new FileWriter(registros, true);        //Ese true significa que se escribira al final del archivo
+                    fileWriter.write(nombre.getText() + fecha.getText() + "\n");
+                    System.out.println("Datos añadidos.");
+                    fileWriter.close();             //Si lo pones entre parentesis la creacion del fileWriter no hace falta el close
+                }catch(IOException e4){
+                    e4.printStackTrace();
+                }
+
+                //Como evento crearemos un archivo que guarde dichos datos
+                System.out.printf(nombre.getText());
+                System.out.printf(fecha.getText());
+                System.out.printf(numeroDocumento.getText());
+                System.out.print(hombre); 
+
+                
+
+
                 ventana.remove(panel);
                 // Creamos un panel nuevo que se vera al pulsar el boton
                 JPanel panel2 = new JPanel();
                 panel2.setLayout(null);
                 
 
-                //Hay que guardar toda la informacion en alguna variable a la hora de pulsar el boton
+                
 
 
 

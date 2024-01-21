@@ -43,7 +43,7 @@ public class repositorioMetodosChistes{
             System.out.printf("El chiste que has seleccionado estaba coloreado de %s \n", coincidencia);                   //Esto captura el numero de color del codigo ansi
             
             chistes[nChiste] = chistes[nChiste].substring(5, chistes[nChiste].length() - 4);
-            System.out.println(chistes[nChiste]);
+            //System.out.println(chistes[nChiste]);
             
         }
 
