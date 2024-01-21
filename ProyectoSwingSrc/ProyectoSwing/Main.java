@@ -7,8 +7,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class Main {
-    public static void main(String[] args) {
-        // Creamos un CountDownLatch con un recuento de 1
+    public static void registro(){
         CountDownLatch latch = new CountDownLatch(1);
 
         //Hacemos la fuente para todos los elementos de la interfaz con UIManager
@@ -27,6 +26,7 @@ public class Main {
         ventana.setSize(600, 400);
         ventana.setLocation(500, 250);
 
+        
         // Creamos un panel
         JPanel panel = new JPanel();
         panel.setLayout(null);
@@ -178,6 +178,10 @@ public class Main {
             e.printStackTrace();
         }
     }
-}
+    
+    public static void main(String[] args) {
+        // Creamos un CountDownLatch con un recuento de 1
+        registro();
+}}
 
 
